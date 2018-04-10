@@ -1,0 +1,61 @@
+body{
+    width: 80%;
+    margin:0 auto;
+}
+
+#clock{
+ background-color: cadetblue;
+ width: 20%;
+ padding: 10px;
+ border: 1px solid black;
+ border-radius: 5px;
+ text-align: center;
+ font-size: 20px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+#tableHead{
+    background: cadetblue;
+
+}
+tr{
+      margin: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: 5px;
+    
+}
+th{
+    text-align: left;
+    padding: 8px;
+    color: antiquewhite
+    
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.tableDiv{
+    width:20%;
+    text-align: center;
+}
+
+#input, #scheduleView{
+    border:1px solid black;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.panel-heading{
+    background-color: cadetblue;
+    border-radius: 3px;
+    text-align: center;
+    padding:10px;
+}
+
