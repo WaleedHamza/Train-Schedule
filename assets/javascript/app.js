@@ -34,7 +34,7 @@ $("#submit").on("click", function(event) {
   var destination = $("#destination").val().trim();
   var firstTrain = $("#firstTrain").val().trim();
   var frequency = $("#frequency").val().trim();
-
+console.log(firstTrain)
   database.ref().push({
         trainName: trainName,
         destination: destination,
@@ -45,29 +45,11 @@ $("#submit").on("click", function(event) {
 
 database.ref().on("child_added", function(snapshot){
   var sv = snapshot.val();
-  // console.log(sv)
-  $("#schedule").append(
-    `
-  <tr id="newRow">
-  <td class="tableDiv">${sv.trainName}</td>
-  <td class="tableDiv">${sv.destination}</td>
-  <td class="tableDiv">${sv.frequency}</td>
-  <td class="tableDiv">${firstTrain}</td>
-  <td class="tableDiv">${nextTrain}</td>
-  <td class="tableDiv">${tMinutesNextTrain}</td>
-  </tr>
-  `
-);
-}, function(errorObject) {
-  console.log("Errors handled: " + errorObject.code);
-});
+  console.log(sv)
 
-//====================time coversion===============//
-
-var trainFreq = 5;
-var firstTrain = "03:30"
-
-var firstConverted = moment(firstTrain, "HH:mm").subtract(1, "years");
+  var trainFreq = sv.frequency
+  console.log(trainFreq);
+  var firstConverted = moment(sv.firstTrain, "HH:mm").subtract(1, "years");
 // console.log(firstConverted);
 
 var currentTime = moment();
@@ -81,7 +63,21 @@ var timeReminder = timeDiff % trainFreq;
 var tMinutesNextTrain = trainFreq - timeReminder;
 // console.log(tMinutesNextTrain);
 
-var nextTrain = moment().add(tMinutesNextTrain, "minutes").format("hh:mm a");
-// console.log(nextTrain);
-//====================time coversion===============//
+var nextTrain = moment().add(tMinutesNextTrain, "minutes").format("HH:mm");
 
+
+  $("#schedule").append(
+    `
+  <tr id="newRow">
+  <td class="tableDiv">${sv.trainName}</td>
+  <td class="tableDiv">${sv.destination}</td>
+  <td class="tableDiv">${sv.frequency}</td>
+  <td class="tableDiv">${sv.firstTrain}</td>
+  <td class="tableDiv">${nextTrain}</td>
+  <td class="tableDiv">${tMinutesNextTrain}</td>
+  </tr>
+  `
+);
+}, function(errorObject) {
+  console.log("Errors handled: " + errorObject.code);
+});
