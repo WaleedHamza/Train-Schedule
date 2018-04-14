@@ -18,7 +18,7 @@ var frequency = $("#frequency").val().trim();
 // ==================Dashboard============================================= 
 // clock//
 var Time = setInterval(function () {
-    now = moment().format('HH:mm:ss A')
+    now = moment().format('HH:mm:ss')
     $("#clock").text(now)
 }, 1000)
 
@@ -86,8 +86,8 @@ database.ref().on("child_added", function (snapshot) {
   <td class="tableDiv">${sv.destination}</td>
   <td class="tableDiv">${sv.frequency}</td>
   <td class="tableDiv">${sv.firstTrain}</td>
-  <td class="tableDiv">${nextTrain}</td>
-  <td class="tableDiv">${tMinutesNextTrain} min</td>
+  <td class="tableDiv dynamicTime1">${nextTrain}</td>
+  <td class="tableDiv dynamicTime2">${tMinutesNextTrain} min</td>
   </tr>
   `
         );

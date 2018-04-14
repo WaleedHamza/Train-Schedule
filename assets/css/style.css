@@ -1,6 +1,7 @@
 body{
     margin:0 auto;
     background: url("../images/jt.jpg") fixed;
+    /* background-color: darkgrey; */
     background-size: cover;
     }
     
